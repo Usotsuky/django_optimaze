@@ -1,0 +1,17 @@
+[tool.poetry]
+name = "celery-l"
+version = "0.1.0"
+description = "Learning introduction to celery and redis"
+authors = ["Nurdos Jurabekov <nurdosjurabekov14@gmail.com>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.10"
+Django = "^5.0.3"
+celery = "^5.3.6"
+redis = "^5.0.3"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"

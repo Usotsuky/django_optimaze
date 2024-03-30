@@ -1,0 +1,7 @@
+../venv
+../.idea
+../poetry.lock
+
+#  info files
+../new_test.txt
+../test.txt
