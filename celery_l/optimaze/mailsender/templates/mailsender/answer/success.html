@@ -1,0 +1,21 @@
+{% extends 'mailsender/base.html' %}
+
+{% block content %}
+    <div class="container">
+        <div class="row">
+            <div class="col-md-8 offset-md-2">
+                <div class="card mt-5">
+                    <div class="card-body">
+                        <p class="mb-4">Your email has been sent successfully to </p>
+                        {% if recipient_list %}
+                            {% for recipient in recipient_list %}
+                                <p>{{ recipient }}</p>
+                            {% endfor %}
+                        {% endif %}
+                        <a href="{% url 'mailsender:send_email' %}" class="back_url">Back to Send Email</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
