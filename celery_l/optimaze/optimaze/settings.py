@@ -11,6 +11,11 @@ https://docs.djangoproject.com/en/5.0/ref/settings/
 """
 
 from pathlib import Path
+import os
+from dotenv import load_dotenv
+
+
+load_dotenv()
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -20,7 +25,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/5.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-564qy%qt_orh3tbp63=@2i4+_$to+gah9%8jvoz_uhd#3i$n#v'
+SECRET_KEY = os.getenv('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -117,8 +122,26 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/5.0/howto/static-files/
 
 STATIC_URL = 'static/'
-
+STATIC_ROOT = [
+    BASE_DIR / "static",
+]
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.0/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+# email settings
+# EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_USE_TLS = True
+EMAIL_PORT = 587
+EMAIL_HOST_USER = 'nurdosjurabekov14@gmail.com'
+EMAIL_HOST_PASSWORD = 'iwoj mahs xfzl olln'
+
+# Session settings
+SESSION_EXPIRE_AT_BROWSER_CLOSE = True  # Session expires when the user closes the browser
+SESSION_COOKIE_AGE = 3600  # Session cookie age in seconds (e.g., 1 hour)
+SESSION_SAVE_EVERY_REQUEST = False  # Save session on every request (default is False)
+SESSION_COOKIE_SECURE = True  # Use secure cookies (HTTPS only)
+SESSION_COOKIE_NAME = 'my_session_cookie'  # Custom session cookie name
+SESSION_ENGINE = 'django.contrib.sessions.backends.db'
